@@ -1,0 +1,11 @@
+function matchPhoneNumber(numbers = []) {
+    let pattern = /\+359([ -])2\1\d{3}\1\d{4}\b/g;
+    let validPhones = [];
+    let validPhone = pattern.exec(numbers);
+    while (validPhone) {
+        validPhones.push(validPhone[0]);
+        validPhone = pattern.exec(numbers);
+    }
+    return validPhones.join(`, `);
+}
+console.log(matchPhoneNumber(['+359 2 222 2222,359-2-222-2222, +359/2/222/2222, +359-2 222 2222 +359 2-222-2222, +359-2-222-222, +359-2-222-22222 +359-2-222-2222']));
